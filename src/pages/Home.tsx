@@ -83,7 +83,6 @@ export default function Home() {
           </div>
         ) : (
           <div className="home-template-wrapper">
-            {/* Onboarding hint - More prominent */}
             {showHint && (
               <div className="home-hint-banner">
                 <div className="home-hint-left">
@@ -119,8 +118,6 @@ export default function Home() {
                 </button>
               </div>
             )}
-
-            {/* Template Content */}
             <div className="home-template-content">
               {selectedTemplate === "minimal-hero" && <MinimalHero />}
               {selectedTemplate === "content-focus" && <ContentFocus />}

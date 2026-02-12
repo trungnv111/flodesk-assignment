@@ -21,7 +21,6 @@ export function HorizontalHeader({ children, onExport }: Props) {
     <div className="layout-shell">
       <header className="layout-header">
         <div className="layout-header-left">
-          {/* Back to templates button when in builder */}
           {selectedTemplate && (
             <button
               onClick={backToTemplates}

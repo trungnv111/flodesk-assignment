@@ -1,10 +1,8 @@
 export default function PortfolioCenter() {
   return (
     <div className="portfolio-center">
-      {/* SECTION 1: HERO SECTION */}
       <section className="portfolio-hero-section">
         <div className="portfolio-container">
-          {/* Hero Image */}
           <div
             className="portfolio-hero-image"
             data-element-type="image"
@@ -24,7 +22,6 @@ export default function PortfolioCenter() {
             </svg>
           </div>
 
-          {/* Main Heading */}
           <h1
             className="portfolio-hero-title"
             data-element-type="heading"
@@ -32,7 +29,6 @@ export default function PortfolioCenter() {
             Create Portfolio Page
           </h1>
 
-          {/* Subheading Paragraph */}
           <p
             className="portfolio-hero-subtitle"
             data-element-type="paragraph"

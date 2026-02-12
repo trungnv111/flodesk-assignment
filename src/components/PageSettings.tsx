@@ -17,13 +17,10 @@ export function PageSettings() {
         <h2 className="settings-title">Page Settings</h2>
       </div>
       <div className="settings-sections">
-        {/* Background Section */}
         <div>
           <h3 className="settings-section-title">
             Background color
           </h3>
-
-          {/* Current color display and picker */}
           <div className="settings-color-row settings-color-row--spaced">
             <div
               className="settings-color-swatch"
@@ -50,17 +47,10 @@ export function PageSettings() {
             />
           </div>
         </div>
-
-        {/* Layout Section */}
         <div className="settings-section">
-          <h3 className="settings-section-title">Layout</h3>
-
-          {/* Page Width Slider */}
           <div className="settings-field">
             <div className="settings-range-row">
-              <label className="settings-range-label">
-                Page width
-              </label>
+              <h3 className="settings-section-title">Page width</h3>
               <span className="settings-range-value">
                 {pageWidth}px
               </span>

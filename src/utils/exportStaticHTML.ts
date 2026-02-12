@@ -35,9 +35,9 @@ const buildStaticHtml = ({
   const baseStyles = `
       * { box-sizing: border-box; }
       html, body { height: 100%; }
-      body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans"; color: #111827; }
+      body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans"; color: #111827; zoom: 1.1 }
       .page { width: 100%; }
-      .container { width: ${pageWidth}px; margin: 0 auto; box-sizing: border-box; background: ${bgColor}; }
+      .container { width: ${pageWidth}px; margin: 0 auto; box-sizing: border-box; background: ${bgColor}; transform-origin: top center; }
     `;
 
   const minimalHeroStyles = `
@@ -113,7 +113,7 @@ const buildStaticHtml = ({
     `;
 
   const generateMinimalHeroHTML = () => {
-    const heroImage = getImageSettings("minimal-hero-image");
+    const heroImage = getImageSettings("template-builder-image");
     const mainHeading = getHeadingSettings("minimal-hero-heading");
     const subParagraph = getParagraphSettings("minimal-hero-paragraph");
     const featuresHeading = getHeadingSettings("minimal-features-heading");

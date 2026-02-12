@@ -174,7 +174,6 @@ export default function ContentFocus() {
           className="content-container"
           style={{ maxWidth: `${Math.min(pageSettings.pageWidth, 750)}px` }}
         >
-          {/* Intro paragraph */}
           <p
             className={`${getElementClasses("content-intro")} content-intro`}
             style={{
@@ -187,8 +186,6 @@ export default function ContentFocus() {
           >
             {introParagraph.text ? introParagraph.text : defaults.intro}
           </p>
-
-          {/* Section 1 */}
           <h2
             className={`${getElementClasses("content-section1-heading")} content-section-heading`}
             style={{

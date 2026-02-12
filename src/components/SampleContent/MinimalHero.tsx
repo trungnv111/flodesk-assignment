@@ -74,7 +74,6 @@ export default function MinimalHero() {
       className={`${selectedElement?.id ? '' : 'template-content-container'} minimal-hero`}
       style={{ backgroundColor: pageSettings.bgColor, width: pageSettings.pageWidth }}
     >
-      {/* SECTION 1: HERO SECTION */}
       <section
         className="minimal-section"
       >
@@ -98,7 +97,6 @@ export default function MinimalHero() {
               <div
                 className="template-builder-image-placeholder"
               >
-                {/* Email icon */}
                 <div className="template-builder-image-icon">
                   <EmailIcon />
                   <span className="template-builder-image-label">Hero Image</span>
@@ -106,8 +104,6 @@ export default function MinimalHero() {
               </div>
             )}
           </div>
-
-          {/* Main Heading */}
           <h1
             className={`${getElementClasses('minimal-hero-heading')} minimal-hero-title`}
             style={{
@@ -120,8 +116,6 @@ export default function MinimalHero() {
           >
             {mainHeading.text ? mainHeading.text : defaults.heroTitle}
           </h1>
-
-          {/* Subheading Paragraph */}
           <p
             className={`${getElementClasses('minimal-hero-paragraph')} minimal-hero-subtitle`}
             style={{
@@ -137,14 +131,11 @@ export default function MinimalHero() {
 
         </div>
       </section>
-
-      {/* SECTION 2: FEATURES SECTION */}
       <section
         className="minimal-section"
         style={{ backgroundColor: pageSettings.bgColor }}
       >
         <div className="minimal-section-container" style={{ maxWidth: `${pageSettings.pageWidth}px` }}>
-          {/* Section Heading */}
           <h2
             className={`${getElementClasses('minimal-features-heading')} minimal-section-title`}
             style={{
@@ -157,8 +148,6 @@ export default function MinimalHero() {
           >
             {featuresHeading.text ? featuresHeading.text : defaults.featuresTitle}
           </h2>
-
-          {/* Description Paragraph */}
           <p
             className={`${getElementClasses('minimal-features-paragraph')} minimal-section-text`}
             style={{
@@ -173,14 +162,11 @@ export default function MinimalHero() {
           </p>
         </div>
       </section>
-
-      {/* SECTION 3: TESTIMONIAL SECTION */}
       <section
         className="minimal-section"
         style={{ backgroundColor: pageSettings.bgColor }}
       >
         <div className="minimal-section-container" style={{ maxWidth: `${pageSettings.pageWidth}px` }}>
-          {/* Testimonial Heading */}
           <h2
             className={`${getElementClasses('minimal-testimonial-heading')} minimal-testimonial-title`}
             style={{
@@ -193,8 +179,6 @@ export default function MinimalHero() {
           >
             {testimonialHeading.text ? testimonialHeading.text : defaults.testimonialTitle}
           </h2>
-
-          {/* Quote Card */}
           <div className="minimal-testimonial-card">
             <p
               className={`${getElementClasses('minimal-testimonial-quote')} minimal-testimonial-quote`}

@@ -107,7 +107,7 @@ const TextSettings =({
       </div>
       <div>
         <label className="settings-label">
-          {isHeading ? "Heading text" : "Paragraph text"}
+          Content
         </label>
         <textarea
           rows={isHeading ? 3 : 5}
@@ -291,7 +291,6 @@ export default function ElementSettings({
             }
           />
         )}
-        {/* Add other element settings components here */}
       </div>
     </div>
   );

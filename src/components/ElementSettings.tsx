@@ -177,17 +177,6 @@ const ImageSetting = ({
           onChange={handleFileChange}
           className="is-hidden"
         />
-        {settings.src ? (
-          <div className="settings-image-preview">
-            <img
-              src={settings.src}
-              alt="Selected"
-              className="settings-image-preview-img"
-            />
-          </div>
-        ) : (
-          <p className="settings-empty-text">No image selected</p>
-        )}
       </div>
 
       <div>

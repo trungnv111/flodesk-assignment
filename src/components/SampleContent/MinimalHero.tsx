@@ -51,6 +51,11 @@ export default function MinimalHero() {
     selectElement({ id, type });
   };
 
+  const handleRemoveImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    updateElement('template-builder-image', 'image', { src: '' });
+  };
+
   // Check if element is selected
   const isSelected = (id: string) => selectedElement?.id === id;
 
@@ -83,16 +88,31 @@ export default function MinimalHero() {
             style={{
               width: '100%',
               maxWidth: `${heroImage.width}px`,
+              position: 'relative',
             }}
             onClick={(e) => handleElementClick(e, 'template-builder-image', 'image')}
             data-hint="Click to edit image"
           >
             {heroImage.src ? (
-              <img
-                src={heroImage.src}
-                alt="Hero"
-                className="template-builder-image"
-              />
+              <>
+                <img
+                  src={heroImage.src}
+                  alt="Hero"
+                  className="template-builder-image"
+                />
+                <button
+                  onClick={handleRemoveImage}
+                  className='remove-img-btn'
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLButtonElement).style.background = 'rgba(0, 0, 0, 0.8)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLButtonElement).style.background = 'rgba(0, 0, 0, 0.6)';
+                  }}
+                >
+                  ✕
+                </button>
+              </>
             ) : (
               <div
                 className="template-builder-image-placeholder"

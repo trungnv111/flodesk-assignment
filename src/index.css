@@ -18,8 +18,17 @@ body,
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   color: var(--color-text);
   background-color: #fafafa;
 }
@@ -119,7 +128,9 @@ a {
 .element-selectable {
   position: relative;
   cursor: pointer;
-  transition: box-shadow 150ms ease, outline-color 150ms ease;
+  transition:
+    box-shadow 150ms ease,
+    outline-color 150ms ease;
   outline: 2px solid transparent;
   outline-style: solid;
   outline-offset: 2px;
@@ -228,7 +239,7 @@ a {
 
 .layout-header {
   height: 64px;
-  background: #FCFAFF;
+  background: #fcfaff;
   border-bottom: 1px solid var(--color-border);
   padding: 0 24px;
   display: flex;
@@ -329,8 +340,12 @@ a {
   font-size: 0.875rem;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease,
-    border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
   padding: 8px 16px;
 }
 
@@ -600,7 +615,7 @@ a {
 .home-sidebar {
   width: 100%;
   border-left: 1px solid var(--color-border);
-  background: #FCFAFF;
+  background: #fcfaff;
 }
 
 @media (min-width: 768px) {
@@ -640,7 +655,10 @@ a {
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  transition: transform 200ms ease, box-shadow 200ms ease, outline 200ms ease;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    outline 200ms ease;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -754,8 +772,9 @@ a {
 .settings-type-id {
   font-size: 0.75rem;
   color: #9ca3af;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   margin: 0;
 }
 
@@ -799,7 +818,6 @@ a {
 .settings-color-swatch {
   width: 48px;
   height: 48px;
-  border-radius: 9999px;
   border: 2px solid #d1d5db;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   cursor: pointer;
@@ -818,7 +836,9 @@ a {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .settings-weight-button--active {
@@ -871,7 +891,9 @@ a {
   font-size: 0.875rem;
   font-weight: 600;
   padding: 8px 16px;
-  transition: background-color 160ms ease, color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .settings-button:disabled {
@@ -900,12 +922,6 @@ a {
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   overflow: hidden;
-}
-
-.settings-image-preview-img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
 }
 
 .settings-empty-text {
@@ -974,7 +990,9 @@ a {
   min-height: 400px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  transition: box-shadow 160ms ease, border-color 160ms ease;
+  transition:
+    box-shadow 160ms ease,
+    border-color 160ms ease;
   background: #ffffff;
 }
 
@@ -1374,4 +1392,23 @@ a {
 
 .portfolio-hero-subtitle:hover {
   color: #4b5563;
+}
+
+.remove-img-btn {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  transition: background 200ms ease;
 }

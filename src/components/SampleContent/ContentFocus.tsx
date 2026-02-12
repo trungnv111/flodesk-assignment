@@ -78,6 +78,11 @@ export default function ContentFocus() {
     selectElement({ id, type });
   };
 
+  const handleRemoveImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    updateElement("content-featured-image", "image", { src: "" });
+  };
+
   return (
     <div
       className={`${selectedElement?.id ? "" : "template-content-container"} content-focus`}
@@ -142,6 +147,7 @@ export default function ContentFocus() {
           style={{
             width: "100%",
             maxWidth: `${featuredImage.width}px`,
+            position: "relative",
           }}
           onClick={(e) =>
             handleElementClick(e, "content-featured-image", "image")
@@ -149,15 +155,29 @@ export default function ContentFocus() {
           data-hint="Click to edit image"
         >
           {featuredImage.src ? (
-            <img
-              src={featuredImage.src}
-              alt="Featured"
-              className="template-builder-image"
-            />
+            <>
+              <img
+                src={featuredImage.src}
+                alt="Featured"
+                className="template-builder-image"
+              />
+              <button
+                onClick={handleRemoveImage}
+                className="remove-img-btn"
+                onMouseEnter={(e) => {
+                  (e.target as HTMLButtonElement).style.background =
+                    "rgba(0, 0, 0, 0.8)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLButtonElement).style.background =
+                    "rgba(0, 0, 0, 0.6)";
+                }}
+              >
+                ✕
+              </button>
+            </>
           ) : (
-            <div
-              className="content-featured-image-placeholder"
-            >
+            <div className="content-featured-image-placeholder">
               <div className="content-featured-image-icon">
                 <ImageIcon />
                 <span className="content-featured-image-label">

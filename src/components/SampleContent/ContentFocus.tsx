@@ -127,6 +127,7 @@ export default function ContentFocus() {
           <p
             className={`${getElementClasses("content-meta")} content-meta`}
             style={{
+              fontWeight: metaParagraph.fontWeight,
               color:
                 metaParagraph.color !== "#4a5568"
                   ? metaParagraph.color

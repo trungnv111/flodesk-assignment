@@ -59,8 +59,12 @@ export function TemplateBuilderProvider({ children }: { children: ReactNode }) {
 
   const getParagraphSettings = (id: string): ParagraphSettings => {
     const element = state.elements?.[id];
+    const baseSettings = id === "content-meta" 
+      ? { ...DEFAULT_PARAGRAPH_SETTINGS, fontWeight: 500 }
+      : DEFAULT_PARAGRAPH_SETTINGS;
+    
     return {
-      ...DEFAULT_PARAGRAPH_SETTINGS,
+      ...baseSettings,
       ...(element?.paragraph || {}),
     };
   };

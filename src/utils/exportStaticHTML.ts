@@ -35,7 +35,7 @@ const buildStaticHtml = ({
   const baseStyles = `
       * { box-sizing: border-box; }
       html, body { height: 100%; }
-      body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans"; color: #111827; zoom: 1.1 }
+      body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans"; color: #111827;}
       .page { width: 100%; }
       .container { width: ${pageWidth}px; margin: 0 auto; box-sizing: border-box; background: ${bgColor}; transform-origin: top center; }
     `;
@@ -96,7 +96,7 @@ const buildStaticHtml = ({
       .content-intro { margin-bottom: 32px; font-size: 1.125rem; line-height: 1.7; }
       .content-section-heading { margin-top: 40px; margin-bottom: 16px; font-size: 1.5rem; }
       .content-section-paragraph { margin-bottom: 24px; line-height: 1.7; }
-      .content-cta-heading { margin-bottom: 24px; font-size: 1.75rem; }
+      .content-cta-heading { margin-bottom: 24px; font-size: 1.75rem; white-space: nowrap; }
       @media (min-width: 768px) {
         .template-builder-image { height: 256px; }
         .content-section--large { padding: 64px 32px; }

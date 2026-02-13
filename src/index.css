@@ -908,15 +908,6 @@ a {
   color: #ffffff;
 }
 
-.settings-button--secondary {
-  background: #f3f4f6;
-  color: #374151;
-}
-
-.settings-button--secondary:hover {
-  background: #e5e7eb;
-}
-
 .settings-image-preview {
   margin-top: 12px;
   border-radius: 12px;

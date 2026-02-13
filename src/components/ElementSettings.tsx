@@ -160,15 +160,6 @@ const ImageSetting = ({
           >
             Upload image
           </button>
-          {settings.src ? (
-            <button
-              type="button"
-              onClick={() => onChange({ src: "" })}
-              className="settings-button settings-button--secondary"
-            >
-              Remove
-            </button>
-          ) : null}
         </div>
         <input
           ref={fileInputRef}

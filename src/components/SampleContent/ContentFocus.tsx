@@ -1,11 +1,17 @@
 import { useTemplateBuilder } from "@/context/TemplateBuilderContextStore";
 import { ImageIcon } from "@/components/Icon/ImageIcon";
-import { type ElementType } from "@/types/template";
-import {
-  DEFAULT_HEADING_SETTINGS,
-  DEFAULT_PARAGRAPH_SETTINGS,
-} from "@/constant/constant";
+import { useTemplateElementInteractions } from "@/hooks/useTemplateElementInteractions";
 import { contentDefaults as defaults } from "@/data/template";
+
+const CONTENT_FOCUS_DEFAULT_TEXT: Record<string, string> = {
+  "content-title": defaults.title,
+  "content-subtitle": defaults.subtitle,
+  "content-meta": defaults.meta,
+  "content-intro": defaults.intro,
+  "content-section1-heading": defaults.section1Title,
+  "content-section1-paragraph": defaults.section1Text,
+  "content-cta-heading": defaults.ctaTitle,
+};
 
 export default function ContentFocus() {
   const {
@@ -19,13 +25,18 @@ export default function ContentFocus() {
 
   const { selectedElement, pageSettings } = state;
 
-  // Check if element is selected
-  const isSelected = (id: string) => selectedElement?.id === id;
-
-  // Get element class names
-  const getElementClasses = (id: string) => {
-    return `element-selectable ${isSelected(id) ? "element-selected" : ""}`;
-  };
+  const {
+    getElementClasses,
+    handleElementClick,
+    createRemoveImageHandler,
+  } = useTemplateElementInteractions({
+    selectedElement,
+    selectElement,
+    updateElement,
+    getHeadingSettings,
+    getParagraphSettings,
+    defaultTextById: CONTENT_FOCUS_DEFAULT_TEXT,
+  });
 
   // Get settings for each element
   const titleHeading = getHeadingSettings("content-title");
@@ -40,48 +51,7 @@ export default function ContentFocus() {
   // Default content
   
 
-  const defaultTextById: Record<string, string> = {
-    "content-title": defaults.title,
-    "content-subtitle": defaults.subtitle,
-    "content-meta": defaults.meta,
-    "content-intro": defaults.intro,
-    "content-section1-heading": defaults.section1Title,
-    "content-section1-paragraph": defaults.section1Text,
-    "content-cta-heading": defaults.ctaTitle,
-  };
-
-  const handleElementClick = (
-    e: React.MouseEvent,
-    id: string,
-    type: ElementType,
-  ) => {
-    e.stopPropagation();
-
-    if (type === "heading" || type === "paragraph") {
-      const defaultText = defaultTextById[id];
-      if (defaultText) {
-        const currentSettings =
-          type === "heading"
-            ? getHeadingSettings(id)
-            : getParagraphSettings(id);
-        const placeholderText =
-          type === "heading"
-            ? DEFAULT_HEADING_SETTINGS.text
-            : DEFAULT_PARAGRAPH_SETTINGS.text;
-
-        if (currentSettings.text === placeholderText) {
-          updateElement(id, type, { text: defaultText });
-        }
-      }
-    }
-
-    selectElement({ id, type });
-  };
-
-  const handleRemoveImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    updateElement("content-featured-image", "image", { src: "" });
-  };
+  const handleRemoveImage = createRemoveImageHandler("content-featured-image");
 
   return (
     <div
@@ -103,7 +73,7 @@ export default function ContentFocus() {
               color: titleHeading.color,
               fontSize: `${titleHeading.fontSize}px`,
             }}
-            onClick={(e) => handleElementClick(e, "content-title", "heading")}
+            onClick={handleElementClick("content-title", "heading")}
             data-hint="Click to edit title"
           >
             {titleHeading.text ? titleHeading.text : defaults.title}
@@ -115,9 +85,7 @@ export default function ContentFocus() {
               fontWeight: subtitleParagraph.fontWeight,
               fontSize: `${subtitleParagraph.fontSize}px`,
             }}
-            onClick={(e) =>
-              handleElementClick(e, "content-subtitle", "paragraph")
-            }
+            onClick={handleElementClick("content-subtitle", "paragraph")}
             data-hint="Click to edit subtitle"
           >
             {subtitleParagraph.text
@@ -134,7 +102,7 @@ export default function ContentFocus() {
                   : "#9ca3af",
               fontSize: `${metaParagraph.fontSize}px`,
             }}
-            onClick={(e) => handleElementClick(e, "content-meta", "paragraph")}
+            onClick={handleElementClick("content-meta", "paragraph")}
             data-hint="Click to edit metadata"
           >
             {metaParagraph.text ? metaParagraph.text : defaults.meta}
@@ -150,9 +118,7 @@ export default function ContentFocus() {
             maxWidth: `${featuredImage.width}px`,
             position: "relative",
           }}
-          onClick={(e) =>
-            handleElementClick(e, "content-featured-image", "image")
-          }
+          onClick={handleElementClick("content-featured-image", "image")}
           data-hint="Click to edit image"
         >
           {featuredImage.src ? (
@@ -202,7 +168,7 @@ export default function ContentFocus() {
               fontWeight: introParagraph.fontWeight,
               fontSize: `${introParagraph.fontSize}px`,
             }}
-            onClick={(e) => handleElementClick(e, "content-intro", "paragraph")}
+            onClick={handleElementClick("content-intro", "paragraph")}
             data-hint="Click to edit intro"
           >
             {introParagraph.text ? introParagraph.text : defaults.intro}
@@ -214,9 +180,7 @@ export default function ContentFocus() {
               color: section1Heading.color,
               fontSize: `${section1Heading.fontSize}px`,
             }}
-            onClick={(e) =>
-              handleElementClick(e, "content-section1-heading", "heading")
-            }
+            onClick={handleElementClick("content-section1-heading", "heading")}
             data-hint="Click to edit heading"
           >
             {section1Heading.text
@@ -230,9 +194,7 @@ export default function ContentFocus() {
               fontWeight: section1Paragraph.fontWeight,
               fontSize: `${section1Paragraph.fontSize}px`,
             }}
-            onClick={(e) =>
-              handleElementClick(e, "content-section1-paragraph", "paragraph")
-            }
+            onClick={handleElementClick("content-section1-paragraph", "paragraph")}
             data-hint="Click to edit paragraph"
           >
             {section1Paragraph.text
@@ -254,9 +216,7 @@ export default function ContentFocus() {
               color: ctaHeading.color,
               fontSize: `${ctaHeading.fontSize}px`,
             }}
-            onClick={(e) =>
-              handleElementClick(e, "content-cta-heading", "heading")
-            }
+            onClick={handleElementClick("content-cta-heading", "heading")}
             data-hint="Click to edit heading"
           >
             {ctaHeading.text ? ctaHeading.text : defaults.ctaTitle}

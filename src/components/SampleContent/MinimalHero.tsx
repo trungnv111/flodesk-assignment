@@ -2,9 +2,18 @@
 
 import { useTemplateBuilder } from '@/context/TemplateBuilderContextStore';
 import EmailIcon from '@/components/Icon/EmailIcon';
-import type { ElementType } from '@/types/template';
-import { DEFAULT_HEADING_SETTINGS, DEFAULT_PARAGRAPH_SETTINGS } from '@/constant/constant';
-import { minimalDefaults as defaults} from '@/data/template';
+import { useTemplateElementInteractions } from '@/hooks/useTemplateElementInteractions';
+import { minimalDefaults as defaults } from '@/data/template';
+
+const MINIMAL_DEFAULT_TEXT: Record<string, string> = {
+  'minimal-hero-heading': defaults.heroTitle,
+  'minimal-hero-paragraph': defaults.heroSubtitle,
+  'minimal-features-heading': defaults.featuresTitle,
+  'minimal-features-paragraph': defaults.featuresText,
+  'minimal-testimonial-heading': defaults.testimonialTitle,
+  'minimal-testimonial-quote': defaults.testimonialQuote,
+  'minimal-testimonial-author': defaults.testimonialAuthor,
+};
 
 export default function MinimalHero() {
   const {
@@ -17,52 +26,21 @@ export default function MinimalHero() {
   } = useTemplateBuilder();
 
   const { selectedElement, pageSettings } = state;
+  const {
+    getElementClasses,
+    handleElementClick,
+    createRemoveImageHandler,
+  } = useTemplateElementInteractions({
+    selectedElement,
+    selectElement,
+    updateElement,
+    getHeadingSettings,
+    getParagraphSettings,
+    defaultTextById: MINIMAL_DEFAULT_TEXT,
+  });
 
-  const defaultTextById: Record<string, string> = {
-    'minimal-hero-heading': defaults.heroTitle,
-    'minimal-hero-paragraph': defaults.heroSubtitle,
-    'minimal-features-heading': defaults.featuresTitle,
-    'minimal-features-paragraph': defaults.featuresText,
-    'minimal-testimonial-heading': defaults.testimonialTitle,
-    'minimal-testimonial-quote': defaults.testimonialQuote,
-    'minimal-testimonial-author': defaults.testimonialAuthor,
-  };
-
-  // Handle element click
-  const handleElementClick = (e: React.MouseEvent, id: string, type: ElementType) => {
-    e.stopPropagation();
-
-    if (type === 'heading' || type === 'paragraph') {
-      const defaultText = defaultTextById[id];
-      if (defaultText) {
-        const currentSettings =
-          type === 'heading' ? getHeadingSettings(id) : getParagraphSettings(id);
-        const placeholderText =
-          type === 'heading'
-            ? DEFAULT_HEADING_SETTINGS.text
-            : DEFAULT_PARAGRAPH_SETTINGS.text;
-
-        if (currentSettings.text === placeholderText) {
-          updateElement(id, type, { text: defaultText });
-        }
-      }
-    }
-
-    selectElement({ id, type });
-  };
-
-  const handleRemoveImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    updateElement('template-builder-image', 'image', { src: '' });
-  };
-
-  // Check if element is selected
-  const isSelected = (id: string) => selectedElement?.id === id;
-
-  // Get element class names
-  const getElementClasses = (id: string) => {
-    return `element-selectable ${isSelected(id) ? 'element-selected' : ''}`;
-  };
+  const handleHeroImageClick = handleElementClick('template-builder-image', 'image');
+  const handleRemoveImage = createRemoveImageHandler('template-builder-image');
 
   // Get settings for each element
   const heroImage = getImageSettings('template-builder-image');
@@ -90,7 +68,7 @@ export default function MinimalHero() {
               maxWidth: `${heroImage.width}px`,
               position: 'relative',
             }}
-            onClick={(e) => handleElementClick(e, 'template-builder-image', 'image')}
+            onClick={handleHeroImageClick}
             data-hint="Click to edit image"
           >
             {heroImage.src ? (
@@ -131,7 +109,7 @@ export default function MinimalHero() {
               color: mainHeading.color,
               fontSize: `${mainHeading.fontSize}px`,
             }}
-            onClick={(e) => handleElementClick(e, 'minimal-hero-heading', 'heading')}
+            onClick={handleElementClick('minimal-hero-heading', 'heading')}
             data-hint="Click to edit heading"
           >
             {mainHeading.text ? mainHeading.text : defaults.heroTitle}
@@ -143,7 +121,7 @@ export default function MinimalHero() {
               fontWeight: subParagraph.fontWeight,
               color: subParagraph.color,
             }}
-            onClick={(e) => handleElementClick(e, 'minimal-hero-paragraph', 'paragraph')}
+            onClick={handleElementClick('minimal-hero-paragraph', 'paragraph')}
             data-hint="Click to edit paragraph"
           >
             {subParagraph.text ? subParagraph.text : defaults.heroSubtitle}
@@ -163,7 +141,7 @@ export default function MinimalHero() {
               fontWeight: featuresHeading.fontWeight,
               color: featuresHeading.color,
             }}
-            onClick={(e) => handleElementClick(e, 'minimal-features-heading', 'heading')}
+            onClick={handleElementClick('minimal-features-heading', 'heading')}
             data-hint="Click to edit heading"
           >
             {featuresHeading.text ? featuresHeading.text : defaults.featuresTitle}
@@ -175,7 +153,7 @@ export default function MinimalHero() {
               fontWeight: featuresParagraph.fontWeight,
               color: featuresParagraph.color,
             }}
-            onClick={(e) => handleElementClick(e, 'minimal-features-paragraph', 'paragraph')}
+            onClick={handleElementClick('minimal-features-paragraph', 'paragraph')}
             data-hint="Click to edit paragraph"
           >
             {featuresParagraph.text ? featuresParagraph.text : defaults.featuresText}
@@ -194,7 +172,7 @@ export default function MinimalHero() {
               fontWeight: testimonialHeading.fontWeight,
               color: testimonialHeading.color,
             }}
-            onClick={(e) => handleElementClick(e, 'minimal-testimonial-heading', 'heading')}
+            onClick={handleElementClick('minimal-testimonial-heading', 'heading')}
             data-hint="Click to edit heading"
           >
             {testimonialHeading.text ? testimonialHeading.text : defaults.testimonialTitle}
@@ -207,7 +185,7 @@ export default function MinimalHero() {
                 fontWeight: testimonialQuote.fontWeight,
                 color: testimonialQuote.color,
               }}
-              onClick={(e) => handleElementClick(e, 'minimal-testimonial-quote', 'paragraph')}
+              onClick={handleElementClick('minimal-testimonial-quote', 'paragraph')}
               data-hint="Click to edit quote"
             >
               {testimonialQuote.text ? testimonialQuote.text : defaults.testimonialQuote}
@@ -219,7 +197,7 @@ export default function MinimalHero() {
                 fontWeight: testimonialAuthor.fontWeight,
                 color: testimonialAuthor.color,
               }}
-              onClick={(e) => handleElementClick(e, 'minimal-testimonial-author', 'paragraph')}
+              onClick={handleElementClick('minimal-testimonial-author', 'paragraph')}
               data-hint="Click to edit author"
             >
               {testimonialAuthor.text ? testimonialAuthor.text : defaults.testimonialAuthor}

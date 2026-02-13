@@ -8,7 +8,10 @@ import type {
   TemplateBuilderState,
   TemplateName,
 } from "@/types/template";
-import { DEFAULT_PAGE_SETTINGS, DEFAULT_PAGE_SETTINGS_BY_TEMPLATE } from "@/constant/constant";
+import {
+  DEFAULT_PAGE_SETTINGS,
+  DEFAULT_PAGE_SETTINGS_BY_TEMPLATE,
+} from "@/constant/constant";
 import { createContext, useContext } from "react";
 
 export type TemplateBuilderContextType = {
@@ -19,9 +22,10 @@ export type TemplateBuilderContextType = {
   updateElement: (
     id: string,
     type: ElementType,
-    settings: Partial<
-      ImageSettings | HeadingSettings | ParagraphSettings 
-    >,
+    settings:
+      | Partial<ImageSettings>
+      | Partial<HeadingSettings>
+      | Partial<ParagraphSettings>,
   ) => void;
 
   deselectElement: () => void;
@@ -69,7 +73,8 @@ export function templateBuilderReducer(
         ...state,
         selectedTemplate: action.payload,
         pageSettings: action.payload
-          ? state.pageSettingsByTemplate[action.payload] ?? DEFAULT_PAGE_SETTINGS
+          ? (state.pageSettingsByTemplate[action.payload] ??
+            DEFAULT_PAGE_SETTINGS)
           : DEFAULT_PAGE_SETTINGS,
       };
     case "SELECT_ELEMENT":
@@ -113,7 +118,8 @@ export function templateBuilderReducer(
       return {
         ...state,
         pageSettings:
-          DEFAULT_PAGE_SETTINGS_BY_TEMPLATE[state.selectedTemplate] ?? DEFAULT_PAGE_SETTINGS,
+          DEFAULT_PAGE_SETTINGS_BY_TEMPLATE[state.selectedTemplate] ??
+          DEFAULT_PAGE_SETTINGS,
         pageSettingsByTemplate: {
           ...state.pageSettingsByTemplate,
           [state.selectedTemplate]:

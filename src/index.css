@@ -1320,12 +1320,18 @@ a {
 /* Portfolio Center */
 .portfolio-center {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio-hero-section {
   width: 100%;
   background: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 50%, #ffffff 100%);
   padding: 80px 32px;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .portfolio-container {

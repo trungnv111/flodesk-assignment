@@ -8,17 +8,11 @@ export function TemplateList() {
 
   return (
     <div className="template-grid">
-      <MinimalHeroPreview
-        handleSelect={() => selectTemplate("minimal-hero")}
-      />
+      <MinimalHeroPreview handleSelect={selectTemplate} />
 
-      <ContentFocusPreview
-        handleSelect={() => selectTemplate("content-focus")}
-      />
+      <ContentFocusPreview handleSelect={selectTemplate} />
 
-      <PortfolioCenterPreview
-        handleSelect={() => selectTemplate("portfolio-center")}
-      />
+      <PortfolioCenterPreview handleSelect={selectTemplate} />
     </div>
   );
 }

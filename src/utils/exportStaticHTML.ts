@@ -227,15 +227,15 @@ const buildStaticHtml = ({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Center</title>
+    <title>Just sample page </title>
     <style>${baseStyles}${portfolioCenterStyles}</style>
   </head>
   <body>
     <div class="page">
       <div class="container">
         <section class="section">
-          <h1>Portfolio Center</h1>
-          <p class="muted">Exported template</p>
+          <h1>Just sample page</h1>
+          <p class="muted">No content here.</p>
         </section>
       </div>
     </div>

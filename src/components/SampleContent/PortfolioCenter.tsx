@@ -26,15 +26,14 @@ export default function PortfolioCenter() {
             className="portfolio-hero-title"
             data-element-type="heading"
           >
-            Create Portfolio Page
+            Create Sample Page
           </h1>
 
           <p
             className="portfolio-hero-subtitle"
             data-element-type="paragraph"
           >
-            Build stunning landing pages with our intuitive page builder. No
-            coding required, just pure creativity.
+            This page serves merely as a sample. No actions are handled here.
           </p>
         </div>
       </section>

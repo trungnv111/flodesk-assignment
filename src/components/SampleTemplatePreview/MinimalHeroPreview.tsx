@@ -1,6 +1,7 @@
 import { ImageIcon } from "@/components/Icon/ImageIcon";
+import type { TemplateName } from "@/types/template";
 
-export default function MinimalHeroPreview({ handleSelect }: { handleSelect: (id: string) => void }) {
+export default function MinimalHeroPreview({ handleSelect }: { handleSelect: (id: TemplateName) => void }) {
   return (
     <div
         onClick={() => handleSelect("minimal-hero")}

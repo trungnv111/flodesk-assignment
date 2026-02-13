@@ -1,9 +1,10 @@
 import { GridIcon } from "@/components/Icon/GridIcon";
+import type { TemplateName } from "@/types/template";
 
 export default function PortfolioCenterPreview({
   handleSelect,
 }: {
-  handleSelect: (id: string) => void;
+  handleSelect: (id: TemplateName) => void;
 }) {
   return (
     <div

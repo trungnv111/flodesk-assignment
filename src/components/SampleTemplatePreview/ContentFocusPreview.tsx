@@ -1,7 +1,9 @@
+import type { TemplateName } from "@/types/template";
+
 export default function ContentFocusPreview({
   handleSelect,
 }: {
-  handleSelect: (templateId: string) => void;
+  handleSelect: (templateId: TemplateName) => void;
 }) {
   return (
     <div

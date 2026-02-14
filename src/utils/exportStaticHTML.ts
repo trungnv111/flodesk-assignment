@@ -193,7 +193,7 @@ const buildStaticHtml = ({
     <div class="page">
       <div class="container">
         <section class="content-section content-section--large">
-          <div class="content-container" style="max-width:${Math.min(pageWidth, 900)}px;">
+          <div class="content-container" style="max-width:${Math.min(pageWidth, 750)}px;">
             <h1 class="content-title" style="font-size:${titleHeading.fontSize}px; font-weight:${titleHeading.fontWeight}; color:${titleHeading.color};">${escapeHtml(titleHeading.text || contentDefaults.title)}</h1>
             <p class="content-subtitle" style="font-size:${subtitleParagraph.fontSize}px; font-weight:${subtitleParagraph.fontWeight}; color:${subtitleParagraph.color};">${escapeHtml(subtitleParagraph.text || contentDefaults.subtitle)}</p>
             <p class="content-meta" style="font-size:${metaParagraph.fontSize}px; font-weight:${metaParagraph.fontWeight}; color:${metaParagraph.color !== "#4a5568" ? metaParagraph.color : "#9ca3af"};">${escapeHtml(metaParagraph.text || contentDefaults.meta)}</p>
